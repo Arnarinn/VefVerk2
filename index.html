@@ -1,9 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title> Vef Verkefni 2</title>
+  <script src="VefVerk2/js/jquery-1.11.3.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="VefVerk2/css/foundation.css">
+  <link rel="stylesheet" type="text/css" href="VefVerk2/css/custom.css">
+  <meta charset="UTF-8">
 </head>
 <body>
-
+<div class="header">
+	<h1>Heimo!</h1>
+</div>
+<div class="row">
+	<div class="large-12 large-centered columns">
+		<label>Search bar
+			<input type="text" id="search" />
+		</label>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+	$.ajax({
+	  'url': 'http://apis.is/address',
+	  'type': 'GET',
+	  'dataType': 'json',
+	  'data': {'address': 'laugavegur 1'},
+	  'success': function(response) {
+	    console.log(response);
+	  }
+	})
+});
+</script>
 </body>
 </html>
