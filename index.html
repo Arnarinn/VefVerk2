@@ -13,22 +13,31 @@
 </div>
 <div class="row">
 	<div class="large-12 large-centered columns">
-		<label>Search bar
-			<input type="text" id="search" />
-		</label>
+		<form>
+			<label>Search bar
+				<input type="text" id="search" />
+			</label>
+		</form>
+	</div>
+	<div class="large-12 large-centered columns address">
+		
 	</div>
 </div>
 <script>
 $(document).ready(function() {
-	$.ajax({
-	  'url': 'http://apis.is/address',
-	  'type': 'GET',
-	  'dataType': 'json',
-	  'data': {'address': 'laugavegur 1'},
-	  'success': function(response) {
-	    console.log(response);
-	  }
-	})
+	var address = $("search").submit(function(data){
+		$.ajax({
+		  	'url': 'http://apis.is/address',
+		  	'type': 'GET',
+		  	'dataType': 'json',
+		  	'data': {'address': data},
+		  	'success': function(response) {
+		  		console.log(response);
+		  	}
+		})
+	});
+	console.log(address);
+
 });
 </script>
 </body>
