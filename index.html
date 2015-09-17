@@ -3,6 +3,7 @@
 <head>
   <title> Vef Verkefni 2</title>
   <script src="VefVerk2/js/jquery-1.11.3.min.js"></script>
+
   <link rel="stylesheet" type="text/css" href="VefVerk2/css/foundation.css">
   <link rel="stylesheet" type="text/css" href="VefVerk2/css/custom.css">
   <meta charset="UTF-8">
@@ -13,31 +14,39 @@
 </div>
 <div class="row">
 	<div class="large-12 large-centered columns">
-		<form>
-			<label>Search bar
-				<input type="text" id="search" />
-			</label>
-		</form>
+		<label>Search bar
+			<input type="text" id="searchbar" />
+		</label>
+		<input type="button" id="submit" value="Search">
 	</div>
-	<div class="large-12 large-centered columns address">
-		
+	<div class="large-12 large-centered columns resault">
+		<span class="street"></span> 
+		<span class="house"></span>
+		<span class="city"></span>
+		<span class="zip"></span>
+		<span class="apartment"></span>
+		<span class="letter"></span>
 	</div>
 </div>
 <script>
 $(document).ready(function() {
-	var address = $("search").submit(function(data){
+	$("#submit").click(function(){
+		var data = $("#searchbar").val();
 		$.ajax({
-		  	'url': 'http://apis.is/address',
-		  	'type': 'GET',
-		  	'dataType': 'json',
-		  	'data': {'address': data},
-		  	'success': function(response) {
-		  		console.log(response);
-		  	}
+			'url': 'http://apis.is/address',
+			'type': 'GET',
+			'dataType': 'json',
+			'data': {'address': data},
+			'success': function(response) {
+		  		$(".street").text(response.street);
+		  		$(".house").text(response.street);
+		  		$(".city").text(response.street);
+		  		$(".zip").text(response.street);
+		  		$(".apartment").text(response.street);
+		  		$(".letter").text(response.street);
+			}
 		})
-	});
-	console.log(address);
-
+	});	
 });
 </script>
 </body>
