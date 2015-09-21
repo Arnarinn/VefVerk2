@@ -17,14 +17,14 @@
 		<label>Search bar
 			<input type="text" id="searchbar" />
 		</label>
-		<input type="button" id="submit" value="Search">
+		<!-- <input type="button" id="submit" value="Search"> -->
 	</div>
 	<div class="large-12 large-centered columns result">
 	</div>
 </div>
 <script>
 $(document).ready(function() {
-	$("#submit").click(function(){
+	$("#searchbar").on("input",function(){
 		var data = $("#searchbar").val();
 		$.ajax({
 			'url': 'http://apis.is/address',
