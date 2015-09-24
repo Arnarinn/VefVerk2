@@ -1,13 +1,14 @@
 $(document).ready(function() {
-	$("#searchbar").on("input",function(){
+	$("#searchbar").click(function(){
 		var data = $("#searchbar").val();
 		$.ajax({
-			'url': 'http://apis.is/address',
+			'url': 'http://apis.is/flight',
 			'type': 'GET',
 			'dataType': 'json',
-			'data': {'address': data},
+			'data': {'laguage': 'is', 'type': 'departures'},
 			'success': function(response) {
 				$(".result").empty();
+				console.log(response)
 				Object.size = function(response) {
 				    var size = 0, key;
 				    for (key in response) {
@@ -20,12 +21,12 @@ $(document).ready(function() {
 						response.results[i].house = "";
 					}
 					console.log(response.results[i])
-					$('.result').append("<br><span>" + response.results[i].street+" ");
-					$('.result').append(response.results[i].house+"<br>");
-					$('.result').append(response.results[i].city+"<br>Póstnúmer:");
-					$('.result').append(response.results[i].zip+"<br>");
-					$('.result').append(response.results[i].apartment+"<br>");
-					$('.result').append(response.results[i].letter+"</span>");
+					$('.result').append("<br><span>" + response.results[i].date+"<br>");
+					$('.result').append(response.results[i].flightNumber+"<br>");
+					$('.result').append(response.results[i].to+"<br>");
+					$('.result').append(response.results[i].plannedArrival+"<br>");
+					$('.result').append(response.results[i].realArrival+"<br>");
+					$('.result').append(response.results[i].status+"</span><br>");
 				};
 			}
 		})

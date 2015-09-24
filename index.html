@@ -3,21 +3,32 @@
 <head>
   <title> Vef Verkefni 2</title>
   <script src="VefVerk2/js/jquery-1.11.3.min.js"></script>
-
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="VefVerk2/css/foundation.css">
   <link rel="stylesheet" type="text/css" href="VefVerk2/css/custom.css">
   <meta charset="UTF-8">
 </head>
 <body>
 <div class="header">
-	<h1>Heimo!</h1>
+	<h1 class="roboto">Departós!</h1>
 </div>
 <div class="row">
 	<div class="large-12 large-centered columns">
-		<label>Search bar
-			<input type="text" id="searchbar" />
-		</label>
-		<!-- <input type="button" id="submit" value="Search"> -->
+		<div class="row">
+			<div class="large-3 columns">
+			<input type="button" id="searchbar" value="Get data" class="small button"/>
+			</div>
+			<div class="large-3 columns">
+				<label> Choose</label>
+					<input type="radio" value="arrivals"><label>Arrivals</label>
+					<input type="radio" value="departures"><label>Departures</label>
+			</div>
+			<div class="large-3 columns end">
+				<label> Choose language </label>
+					<input type="radio" value="IS"><label>IS</label>
+					<input type="radio" value="EN"><label>EN</label>
+			</div>
+		</div>	
 	</div>
 	<div class="large-12 large-centered columns result">
 	</div>
