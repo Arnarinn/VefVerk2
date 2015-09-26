@@ -17,8 +17,7 @@ body{
  }
  .result{
  	border: 2px solid #3399FF;
- 	border-radius: 2px;
- 	background-color: #e2f3f9
+ 	background-color: #e2f3f9;
  }
  .roboto{
  	font-family: 'Roboto Condensed', sans-serif;

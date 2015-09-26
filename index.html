@@ -2,10 +2,10 @@
 <html>
 <head>
   <title> Vef Verkefni 2</title>
-  <script src="VefVerk2/js/jquery-1.11.3.min.js"></script>
+  <script src="js/jquery-1.11.3.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="VefVerk2/css/foundation.css">
-  <link rel="stylesheet" type="text/css" href="VefVerk2/css/custom.css">
+  <link rel="stylesheet" type="text/css" href="css/foundation.css">
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
   <meta charset="UTF-8">
 </head>
 <body>
@@ -15,25 +15,26 @@
 <div class="row">
 	<div class="large-12 large-centered columns">
 		<div class="row">
-			<div class="large-3 columns">
-			<input type="button" id="searchbar" value="Get data" class="small button"/>
+			<div class="large-4 columns">
+			<input type="button" id="search" value="Get data" class="small button"/>
 			</div>
-			<div class="large-3 columns">
-				<label> Choose</label>
-					<input type="radio" value="arrivals"><label>Arrivals</label>
-					<input type="radio" value="departures"><label>Departures</label>
+			<div class="large-4 columns">
+				<label> Choose </label>
+					<input type="radio" value="arrivals" name="data" id="arrivals" checked="checked"><label>Arrivals</label>
+					<input type="radio" value="departures" name="data" id="departures"><label>Departures</label>
 			</div>
-			<div class="large-3 columns end">
+			<div class="large-4 columns end">
 				<label> Choose language </label>
-					<input type="radio" value="IS"><label>IS</label>
-					<input type="radio" value="EN"><label>EN</label>
+					<input type="radio" value="IS" name="language" id="is" checked="checked"><label>IS</label>
+					<input type="radio" value="EN" name="language" id="en"><label>EN</label>
 			</div>
 		</div>	
 	</div>
-	<div class="large-12 large-centered columns result">
-	</div>
 </div>
-<script src="vefVerk2/js/javascript.js">
+<ul class="small-block-grid-3 returned">
+
+</ul>
+<script src="js/javascript.js">
 </script>
 </body>
 </html>
