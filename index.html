@@ -15,25 +15,34 @@
 <div class="row">
 	<div class="large-12 large-centered columns">
 		<div class="row">
-			<div class="large-4 columns">
-			<input type="button" id="search" value="Get data" class="small button"/>
+			<div class="large-3 medium-3 small-3 columns">
+			<input type="button" id="search" value="Ná í gögn" class="small button"/>
 			</div>
-			<div class="large-4 columns">
-				<label> Choose </label>
-					<input type="radio" value="arrivals" name="data" id="arrivals" checked="checked"><label>Arrivals</label>
-					<input type="radio" value="departures" name="data" id="departures"><label>Departures</label>
+			<div class="large-3 medium-3 small-3 columns">
+				<label id="arrivalsOrDeprature"> Veldu </label>
+					<input type="radio" name="data" id="arrivals" checked="checked">
+					<label for="arrivals" class="arrivals">Lendingar</label>
+					<input type="radio" name="data" id="departures">
+					<label for="departures" class="depratures">Flugtök</label>
 			</div>
-			<div class="large-4 columns end">
-				<label> Choose language </label>
-					<input type="radio" value="IS" name="language" id="is" checked="checked"><label>IS</label>
-					<input type="radio" value="EN" name="language" id="en"><label>EN</label>
+			<div class="large-3 medium-3 small-3 columns end">
+				<label id="language"> Veldu tungumál </label>
+					<input type="radio" name="language" id="is" checked="checked"><label for="is">IS</label>
+					<input type="radio" name="language" id="en"><label for="en">EN</label>
 			</div>
 		</div>	
 	</div>
+	<!-- Tómt því öll gögn eru sótt í apanum -->
+	<div class="large-12 large-centered">
+		<table class="table">
+			<thead class="thead">
+			</thead>
+			<tbody class="returned">	
+			</tbody>
+		</table>
+	</div>
 </div>
-<ul class="small-block-grid-3 returned">
 
-</ul>
 <script src="js/javascript.js">
 </script>
 </body>
