@@ -30,10 +30,12 @@ $(document).ready(function() {
 				    }
 				    return size;
 				}
+
 				//Chékkar hvort valið tungumál sé enska eða íslenska
 				if (language == "is") {
 					var date = "Dagsetning";
 					var flightnumber = "Flug Nr.";
+					var airline = "Flugfélag"
 					$("#search").prop("value", "Ná í gögn");
 					$("#arrivalsOrDeprature").html("Veldu");
 					$("#language").html("Tungumál");
@@ -53,6 +55,7 @@ $(document).ready(function() {
 				else{
 					var date = "Date";
 					var flightnumber = "Flight Nr.";
+					var airline = "Airline"
 					$("#search").prop("value", "Get data");
 					$("#arrivalsOrDeprature").html("Choose");
 					$("#language").html("Language");
@@ -72,46 +75,61 @@ $(document).ready(function() {
 				//sýnir töfluna aftur
 				$(".table").show();
 				//Setur upp töflu headerinn
-				var thead = "<th width='180' class='theadSort'>";
-				$('.thead').append(thead + date +"</th>"
-					+ thead + flightnumber +"</th>"
-					+ thead + location +"</th>"
-					+ thead + planedArrival +"</th>"
-					+ thead + realArrival +"</th>");
+				var thead = "<th width='180' class='theadSort'";
+				$('.thead').append(thead + "id='date'>" + date +"</th>"
+					+ thead + "id='flightnumber'>" + flightnumber +"</th>"
+					+ thead + "id='location'>" + location +"</th>"
+					+ thead + "id='airline'>" + airline +"</th>"
+					+ thead + "id='plannedArrival'>" + planedArrival +"</th>"
+					+ thead + "id='realArrival'>" + realArrival +"</th>");
+				// $(".theadSort").click(function(){
+				// 	$(".returned").empty();
+				// 	var array = $.map(response, function(value, index){
+				// 		return [value];
+				// 	})
+				// 	console.log(array)
+				// 	var values = $(this).prop("id");
+				// 	var result = array.sort();
+				// 	// drawTable(result);
+				// 	console.log(result);
+				// })
 				//Loopa sem notar object stærðina til að fara í gegnum öll gögnin
-				for (var i = 0; i < Object.size(response.results); i++) {
-					//Stundum gefur þetta út tómt svo settið það sem unknown eða óvitað
-					if (response.results[i].realArrival == "") {
-						if (language == "is")
-							response.results[i].realArrival = "Óvitað";
-						else
-							response.results[i].realArrival = "Unknown";
-					}
-					//setur upp töflu fyrir arrivals eða lendingar
-					var tdtd = "</td><td>";
-					if (ArrivalOrDepart == "arrivals") {
-						$('.returned').append("<tr><td>" 
-							+ response.results[i].date 
-							+ tdtd + response.results[i].flightNumber 
-							+ tdtd + response.results[i].from 
-							+ tdtd + response.results[i].plannedArrival 
-							+ tdtd +  response.results[i].realArrival 
-							+ "</td></tr>");
-					}
-					//setur upp toflu fyrir depratures eða flugtök
-					else{
-						$('.returned').append("<tr><td>" + response.results[i].date 
-							+ tdtd + response.results[i].flightNumber 
-							+ tdtd + response.results[i].to
-							+ tdtd + response.results[i].plannedArrival
-							+ tdtd + response.results[i].realArrival 
-							+ "</td></tr>");
+				function drawTable(obj){
+					for (var i = 0; i < Object.size(obj); i++) {
+						//Stundum gefur þetta út tómt svo settið það sem unknown eða óvitað
+						if (response.results[i].realArrival == "") {
+							if (language == "is")
+								obj[i].realArrival = "Óvitað";
+							else
+								obj[i].realArrival = "Unknown";
+						}
+						//setur upp töflu fyrir arrivals eða lendingar
+						var tdtd = "</td><td>";
+						if (ArrivalOrDepart == "arrivals") {
+							$('.returned').append("<tr><td>" 
+								+ obj[i].date 
+								+ tdtd + obj[i].flightNumber 
+								+ tdtd + obj[i].from 
+								+ tdtd + obj[i].airline 
+								+ tdtd + obj[i].plannedArrival 
+								+ tdtd + obj[i].realArrival 
+								+ "</td></tr>");
+						}
+						//setur upp toflu fyrir depratures eða flugtök
+						else{
+							$('.returned').append("<tr><td>" 
+								+ objs[i].date 
+								+ tdtd + obj[i].flightNumber 
+								+ tdtd + obj[i].to
+								+ tdtd + obj[i].airline
+								+ tdtd + obj[i].plannedArrival
+								+ tdtd + obj[i].realArrival 
+								+ "</td></tr>");
+						}
 					}
 				}
+				drawTable(response.results);
 			}
 		})
-	})
-	$(".theadSort").click(function(){
-		console.log("stuff");
 	})
 });
