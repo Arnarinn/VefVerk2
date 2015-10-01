@@ -30,6 +30,12 @@ $(document).ready(function() {
 				    }
 				    return size;
 				}
+				function Leaf(obj,path) {
+					path=path.split('.');
+					var res=obj;
+					for (var i=0;i<path.length;i++) res=res[path[i]];
+					return res;
+				}
 
 				//Chékkar hvort valið tungumál sé enska eða íslenska
 				if (language == "is") {
@@ -77,22 +83,25 @@ $(document).ready(function() {
 				//Setur upp töflu headerinn
 				var thead = "<th width='180' class='theadSort'";
 				$('.thead').append(thead + "id='date'>" + date +"</th>"
-					+ thead + "id='flightnumber'>" + flightnumber +"</th>"
+					+ thead + "id='flightNumber'>" + flightnumber +"</th>"
 					+ thead + "id='location'>" + location +"</th>"
 					+ thead + "id='airline'>" + airline +"</th>"
 					+ thead + "id='plannedArrival'>" + planedArrival +"</th>"
 					+ thead + "id='realArrival'>" + realArrival +"</th>");
-				// $(".theadSort").click(function(){
-				// 	$(".returned").empty();
-				// 	var array = $.map(response, function(value, index){
-				// 		return [value];
-				// 	})
-				// 	console.log(array)
-				// 	var values = $(this).prop("id");
-				// 	var result = array.sort();
-				// 	// drawTable(result);
-				// 	console.log(result);
-				// })
+				//Sorting
+				$(".theadSort").click(function(){
+					$(".returned").empty();
+					sortables = [];
+					var values = $(this).prop("id");
+					for (var i = 0; i < Object.size(response.results); i++) {
+						sortables[i] = eval("response.results[i]."+ values);
+					};
+					console.log(sortables);
+					// drawTable(result);
+					console.log(response.results[0])
+					console.log(values)
+					console.log(eval("response.results[0]." + values));
+				})
 				//Loopa sem notar object stærðina til að fara í gegnum öll gögnin
 				function drawTable(obj){
 					for (var i = 0; i < Object.size(obj); i++) {
